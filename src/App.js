@@ -1,5 +1,9 @@
+import {useState} from 'react';
+import Login from './pages/LoginPage';
+import Dashboard from './pages/DashboardPage';
+import {Route, Routes, Navigate} from "react-router-dom";
 
-const tournamentList = [
+const TOURNAMENT_LIST = [
   {
     id: 0,
     name: "Jason's Birthday Tournament",
@@ -50,19 +54,36 @@ const tournamentList = [
   }
 ]
 
+
 function App() {
+  const [tournamentList, setTournamentList] = useState(TOURNAMENT_LIST);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
-      <h1>Select Tourney</h1>
-      {
-        tournamentList.map((tournament)=>(
-          <div className="bg-light border">
-            <p><b>{tournament.name}</b></p>
-            <p>{tournament.location} || {tournament.start_time}</p>
-          </div>
-          
-        ))
-      }
+      <Routes>
+        {/* Redirect to /dashboard if logged in */}
+        <Route
+          path="/login"
+          element={
+              <Login setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+
+        {/* Protect the dashboard route */}
+        <Route
+          path="/dashboard"
+          element={
+              <Dashboard tournamentList={tournamentList} />
+          }
+        />
+
+        {/* Default route */}
+        <Route
+          path="/"
+          element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
+        />
+      </Routes>
+      
     </div>
   );
 }
