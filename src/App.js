@@ -62,7 +62,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
-      <Header/>
+      <header>
+        <Header isLoggedIn={isLoggedIn}/>
+      </header>
+     
       <Routes>
         {/* Redirect to /dashboard if logged in */}
         <Route
