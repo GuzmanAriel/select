@@ -2,6 +2,8 @@ import {useState} from 'react';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import {Route, Routes, Navigate} from "react-router-dom";
+import Header from './components/Header';
+
 
 const TOURNAMENT_LIST = [
   {
@@ -60,6 +62,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
+      <Header/>
       <Routes>
         {/* Redirect to /dashboard if logged in */}
         <Route
