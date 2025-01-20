@@ -39,12 +39,12 @@ const Header = (props) => {
             </div>
             
             
-            <Collapse isOpen={menuOpen} className="navbar-collapse-user" navbar>
+            <Collapse isOpen={menuOpen} className="navbar-collapse-user border border-secondary" navbar>
                 <Nav className='ms-auto' navbar>
                     {!isLoggedIn && (
                         <>
                         <NavItem>
-                            <NavLink className='nav-link' to='/'>
+                            <NavLink className='nav-link' to='/sign-up'>
                                 Sign up
                             </NavLink>
                         </NavItem>

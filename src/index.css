@@ -12,6 +12,7 @@ body {
   font-family: "Poppins", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:rgb(var(--bs-primary));
 }
 
 code {
@@ -142,12 +143,54 @@ a:hover {
 
 
 .navbar-collapse-user {
-  width: 150px;
+  width: 120px;
   position: absolute;
   right: 0;
   top: 70px;
   background: rgb(var(--bs-primary));
   padding: 20px;
-  border-bottom-left-radius:5px;
+  border-radius:5px;
+  -webkit-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
+-moz-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
+box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
 }
+
+.ts-form {
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 5rem;
+  padding: 20px;
+}
+
+header {
+  -webkit-box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
+-moz-box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
+box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
+}
+
+.btn-primary{
+  background: rgb(var(--bs-primary));
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn-primary:hover{
+  background: #fff;
+  color: rgb(var(--bs-primary));
+  border: 1px solid rgb(var(--bs-primary))
+}
+
+.ts-form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+
+
+.ts-form a:hover, .ts-form a:focus, .ts-form a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
 

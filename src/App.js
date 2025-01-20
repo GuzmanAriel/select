@@ -3,6 +3,7 @@ import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import {Route, Routes, Navigate} from "react-router-dom";
 import Header from './components/Header';
+import Signup from './pages/SignUpPage';
 
 
 const TOURNAMENT_LIST = [
@@ -62,7 +63,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
-      <header>
+      <header className="border-secondary border-bottom">
         <Header isLoggedIn={isLoggedIn}/>
       </header>
      
@@ -88,6 +89,10 @@ function App() {
           path="/"
           element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
         />
+
+        <Route 
+        path="/sign-up"
+        element={<Signup/>}></Route>
       </Routes>
       
     </div>
