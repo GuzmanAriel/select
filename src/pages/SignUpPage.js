@@ -1,74 +1,89 @@
 
 import {
-    Form,
     FormGroup,
     Input,
     Label,
-    FormText,
     Button,
   } from 'reactstrap';
+  import {Formik, Field, Form, ErrorMessage} from 'formik';
+
+  import { validateLoginForms } from '../utils/validateLoginForms';
   
   const Signup = () => {
+    const handleSubmit = (values, { resetForm }) => {
+        console.log('form values:', values);
+        console.log('in JSON format:', JSON.stringify(values));
+        resetForm();
+    };
+
     return (
         <div className="ts-form">
-            <h1 className="mb-5">Sign Up</h1>
-            <Form>
-                <FormGroup>
-                    <Label for="firstName">
-                    First Name
-                    </Label>
-                    <Input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="lastName">
-                    Last Name
-                    </Label>
-                    <Input
-                    id="lastName"
-                    name="lasttName"
-                    type="text"
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="email">
-                    Email
-                    </Label>
-                    <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    />
-                </FormGroup>
-                <FormGroup className="mt-2">
-                    <Label for="password">
-                    Password
-                    </Label>
-                    <Input
-                    id="password"
-                    name="password"
-                    type="password"
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="confirmPassword">
-                        Confirm Password
-                    </Label>
-                    <Input
-                    id="confirmPassword"
-                    name="password"
-                    type="password"
-                    />
-                </FormGroup>
-                
-                <Button className="mt-3 float-end" color="primary">
-                    Sign Up
-                </Button>
-                <div class="clearfix"></div>
-            </Form>
+             <h1 className="mb-5">Sign Up</h1>
+             <Formik
+                initialValues={{
+                    firstName:'',
+                    lastName:'',
+                    email: '',
+                    password:'',
+                }}
+                onSubmit={handleSubmit}
+                validate={validateLoginForms}
+            >
+                <Form>
+                    <FormGroup>
+                        <Label htmlFor='firstName'>
+                            First Name
+                        </Label>
+                        
+                        <Field name="firstName" className='form-control bg-transparent text-white'/>
+                        <ErrorMessage  name="firstName">
+                            {(msg)=> <p className="text-danger">{msg}</p>}
+                        </ErrorMessage>
+                        
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor='lastName'>
+                            Last Name
+                        </Label>
+                        
+                        <Field name="lastName" className='form-control bg-transparent text-white'/>
+                        <ErrorMessage  name="lastName">
+                            {(msg)=> <p className="text-danger">{msg}</p>}
+                        </ErrorMessage>
+                        
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor='email'>
+                            Email
+                        </Label>
+                        <Field name="email" className='form-control bg-transparent text-white'/>
+                        <ErrorMessage  name="email">
+                            {(msg)=> <p className="text-danger">{msg}</p>}
+                        </ErrorMessage>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor='password'>
+                            Password
+                        </Label>
+                        <Field name="password" className='form-control bg-transparent text-white' type="password"/>
+                        <ErrorMessage  name="password">
+                            {(msg)=> <p className="text-danger">{msg}</p>}
+                        </ErrorMessage>
+                    </FormGroup>
+
+                    <FormGroup className="mt-3 float-end" color="primary">
+                        <Button type='submit' color='primary'>
+                            Sign Up
+                        </Button>
+                        <div class="clearfix"></div>
+                    </FormGroup>
+                </Form>
+
+            </Formik>
+        
             <p className="mt-4">Have an account? <a href="/login">Log in here</a> </p>
         </div>
         

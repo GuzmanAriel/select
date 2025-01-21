@@ -1,11 +1,8 @@
 
 import {
     FormGroup,
-    Input,
     Label,
-    FormText,
     Button,
-    Col
   } from 'reactstrap';
   import {Formik, Field, Form, ErrorMessage} from 'formik';
 
@@ -35,7 +32,7 @@ import {
                             Email
                         </Label>
                         
-                        <Field name="email" className='form-control'/>
+                        <Field name="email" className='form-control bg-transparent text-white'/>
                         <ErrorMessage  name="email">
                             {(msg)=> <p className="text-danger">{msg}</p>}
                         </ErrorMessage>
@@ -47,7 +44,7 @@ import {
                             Password
                         </Label>
                         
-                        <Field name="password" className='form-control'/>
+                        <Field name="password" className='form-control bg-transparent text-white'/>
                         <ErrorMessage  name="password">
                             {(msg)=> <p className="text-danger">{msg}</p>}
                         </ErrorMessage>
