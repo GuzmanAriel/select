@@ -8,7 +8,7 @@ import { selectAllTournaments} from './utils/tournaments/tournamentLists';
 
 function App() {
   const tournamentList  = selectAllTournaments();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <div>
       <header className="border-secondary border-bottom">

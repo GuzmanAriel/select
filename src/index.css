@@ -25,9 +25,22 @@ code {
 .navbar-dark .navbar-toggler {
   border-color:transparent
 }
-.navbar-dark .navbar-nav .nav-link, .navbar-user .fa-user, .nav-link, a:hover, .nav-link:hover, .nav-link:focus, a:visited{
+
+.navbar-dark .navbar-nav .nav-link, .navbar-user .fa-user, .nav-link, a:hover, .nav-link:hover, .nav-link:focus{
+  color:#fff;
+  font-weight: bold;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+.navbar-dark .navbar-collapse-user .navbar-nav .nav-link {
+  font-size: 18px;
+}
+
+a:visited{ 
   color:#fff;
 }
+
 
 a:hover {
   text-decoration: underline;
@@ -143,12 +156,12 @@ a:hover {
 
 
 .navbar-collapse-user {
-  width: 120px;
+  width: 150px;
   position: absolute;
   right: 0;
-  top: 70px;
+  top: 98px;
   background: rgb(var(--bs-primary));
-  padding: 20px;
+  padding: 12px 20px;
   border-radius:5px;
   -webkit-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
 -moz-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
@@ -208,7 +221,6 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  max-width:600px;
   margin-left: auto;
   margin-right: auto;
 }

@@ -8,6 +8,8 @@ import {
     NavItem,
   } from 'reactstrap';
   import { NavLink } from 'react-router-dom';
+import ProfilePicture from './images/ProfilePicture';
+  
 //   import Logo from 'https://placehold.co/200x80';
 
 const Header = (props) => {
@@ -19,7 +21,7 @@ const Header = (props) => {
             <NavbarBrand className='ms-5' href='/'>
                 <img src="https://placehold.co/200x80" alt='Tournament Select logo' className='float-start' />
             </NavbarBrand>
-            <div className="d-flex align-items-start">
+            <div className="d-flex align-items-center">
                 {isLoggedIn && (
                     <Nav>
                         <NavItem>
@@ -32,7 +34,9 @@ const Header = (props) => {
                 
                 <div className="flex navbar-user" >
                     <NavbarToggler onClick={() => setMenuOpen(!menuOpen)} className="block">
-                    <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                    {/* <i class="fa fa-user fa-lg" aria-hidden="true"></i> */}
+                        <ProfilePicture/>
+
                     </NavbarToggler>
                     
                 </div>
