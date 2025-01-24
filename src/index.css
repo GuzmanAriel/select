@@ -238,7 +238,7 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   font-size: 25px;
   border:none;
   border-radius: 999px;
-  color:#A3A3A3;
+  color:#FFF;
 }
 
 .nav-tabs .nav-link:hover {
@@ -248,4 +248,9 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   border-radius: 999px;
   background: #fff;
   color:#000;
+}
+
+.card-title {
+  font-size: 20px;
+  letter-spacing: 1px;
 }
