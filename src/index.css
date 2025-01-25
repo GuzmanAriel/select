@@ -15,12 +15,18 @@ body {
   background:rgb(var(--bs-primary));
 }
 
+img {
+  max-width: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-
+.logo {
+  max-width: 200px;
+}
 
 .navbar-dark .navbar-toggler {
   border-color:transparent
@@ -156,12 +162,12 @@ a:hover {
 
 
 .navbar-collapse-user {
-  width: 150px;
+  min-width: 190px;
   position: absolute;
   right: 0;
-  top: 98px;
+  top: 110px;
   background: rgb(var(--bs-primary));
-  padding: 12px 20px;
+  padding: 15px 20px;
   border-radius:5px;
   -webkit-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
 -moz-box-shadow: -8px 6px 11px 1px rgba(22,27,31,0.37);
@@ -208,7 +214,7 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 
 .ts-dashboard { 
   margin-top: 6rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -251,6 +257,7 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1px;
+  margin-bottom:0;
 }

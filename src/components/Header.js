@@ -9,6 +9,7 @@ import {
   } from 'reactstrap';
   import { NavLink } from 'react-router-dom';
 import ProfilePicture from './images/ProfilePicture';
+import Logo from '../assets/images/logo.png';
   
 //   import Logo from 'https://placehold.co/200x80';
 
@@ -18,19 +19,10 @@ const Header = (props) => {
 
     return (
         <Navbar dark color='primary' sticky='top'>
-            <NavbarBrand className='ms-5' href='/'>
-                <img src="https://placehold.co/200x80" alt='Tournament Select logo' className='float-start' />
+            <NavbarBrand className='ms-5 logo' href='/'>
+                <img src={Logo} alt='Tournament Select logo' className='float-start' />
             </NavbarBrand>
             <div className="d-flex align-items-center">
-                {isLoggedIn && (
-                    <Nav>
-                        <NavItem>
-                            <NavLink className='nav-link' to='/'>
-                                Dashboard
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                )}
                 
                 <div className="flex navbar-user" >
                     <NavbarToggler onClick={() => setMenuOpen(!menuOpen)} className="block">
@@ -62,11 +54,19 @@ const Header = (props) => {
                     )}
                     
                     {isLoggedIn && (
+                        <>
+                        <NavItem>
+                            <NavLink className='nav-link' to='/'>
+                                Dashboard
+                            </NavLink>
+                        </NavItem>
                         <NavItem>
                             <NavLink className='nav-link' to='/'>
                                 Settings
                             </NavLink>
                         </NavItem>
+                        </>
+                        
                     )}
                    
                 </Nav>

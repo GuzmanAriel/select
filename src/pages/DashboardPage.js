@@ -5,15 +5,10 @@ import {
     TabContent,
     TabPane,
     Row,
-    Col,
-    Card,
-    CardBody,
-    CardTitle,
-    CardText,
-    Button,
   } from 'reactstrap';
   import { useState } from 'react';
   import { selectAllTournaments} from '../utils/tournaments/tournamentLists';
+  import TournamentCard from '../components/card/TournamentCard';
   
   const Dashboard = (props) => {
     // State to track the active tab
@@ -58,81 +53,19 @@ import {
         <TabContent activeTab={activeTab} className="mt-5">
           <TabPane tabId="1">
             <Row>
-              <Col sm="6">
-                <Card className="bg-transparent border-1 border-white">
-                <img
-                    alt="Sample"
-                    src="https://picsum.photos/200/80"
-                  />
-                  <CardBody>
-                    <CardTitle className="fw-bold card-title">First of Season Tournament</CardTitle>
-                    <CardText>
-                      With supporting text below as a natural lead-in to additional
-                      content.
-                    </CardText>
-                    <Button>Go somewhere</Button>
-                  </CardBody>
-                </Card>
-              </Col>
-
-              <Col sm="6">
-                <Card>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to additional
-                    content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
+             
+              <TournamentCard/>
             </Row>
           </TabPane>
           <TabPane tabId="2">
-            <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to additional
-                    content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to additional
-                    content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-            </Row>
+           <Row>
+            <TournamentCard/>
+           </Row>
+             
           </TabPane>
           <TabPane tabId="3">
             <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to additional
-                    content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>
-                    With supporting text below as a natural lead-in to additional
-                    content.
-                  </CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
+             <TournamentCard/>
             </Row>
           </TabPane>
         </TabContent>
