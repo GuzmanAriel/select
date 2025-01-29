@@ -1,3 +1,4 @@
+import {useSelector} from 'react-redux';
 import {
     Nav,
     NavItem,
@@ -7,13 +8,13 @@ import {
     Row,
   } from 'reactstrap';
   import { useState } from 'react';
-  import { selectAllTournaments} from '../utils/tournaments/tournamentLists';
   import TournamentCard from '../components/card/TournamentCard';
+  import {selectAllTournaments } from '../features/tournaments/tournamentsSlice';
   
   const Dashboard = (props) => {
     // State to track the active tab
     const [activeTab, setActiveTab] = useState("1");
-    const tournaments = selectAllTournaments();
+    const tournaments = useSelector(selectAllTournaments);
   
     // Function to toggle the active tab
     const toggleTab = (tab) => {
@@ -53,8 +54,12 @@ import {
         <TabContent activeTab={activeTab} className="mt-5">
           <TabPane tabId="1">
             <Row>
-             
+             {
+             tournaments.map((tournament)=> (
               <TournamentCard/>
+              ))
+             }
+              
             </Row>
           </TabPane>
           <TabPane tabId="2">

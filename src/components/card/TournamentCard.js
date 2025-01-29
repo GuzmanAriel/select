@@ -14,7 +14,7 @@ const TournamentCard = () => {
     
     return (
         <Col sm="6">
-            <Card className="bg-transparent border-1 border-white">
+            <Card className="bg-transparent border-1 border-white mb-5">
                 <CardBody>
                 <i class="fa-solid fa-calendar-days"></i>
                     <div className="border-b-1 border-white d-flex align-items-center justify-content-between">
