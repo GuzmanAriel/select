@@ -6,7 +6,7 @@ export const TOURNAMENTS = [
       start_time: "9:00am",
       location: "Zilker Park",
       tournament_type: "BYO4",
-      playoff_elimination_type: "Single",
+      playoff_elimination_type: "Single Elimination",
       playoff_bracket_number: 2,
       prizes: {
         first_place: "$1000 and gift card",
@@ -20,9 +20,9 @@ export const TOURNAMENTS = [
       name: "First Tournament",
       date_utc: "2025-04-20T00:00:00Z",
       start_time: "9:00am",
-      location: "Zilker Park - first",
+      location: "Auditorium Shores",
       tournament_type: "BYO3",
-      playoff_elimination_type: "Single",
+      playoff_elimination_type: "Single Elimination",
       playoff_bracket_number: 1,
       prizes: {
         first_place: "$1000 and gift card",
@@ -38,7 +38,7 @@ export const TOURNAMENTS = [
       start_time: "9:00am",
       location: "Zilker Park",
       tournament_type: "BYO4",
-      playoff_elimination_type: "Single",
+      playoff_elimination_type: "Double Elimination",
       playoff_bracket_number: 1,
       prizes: {
         first_place: "$1000 and gift card",
