@@ -1,8 +1,5 @@
 import {useState, useEffect} from 'react';
 import {
-    TabContent,
-    TabPane,
-    Row,
     Col,
     Card,
     CardBody,

@@ -9,12 +9,17 @@ import {
   } from 'reactstrap';
   import { useState } from 'react';
   import TournamentCard from '../components/card/TournamentCard';
-  import {selectAllTournaments } from '../features/tournaments/tournamentsSlice';
+  import {selectCurrentTournaments, selectPastTournaments, selectFutureTournaments } from '../features/tournaments/tournamentsSlice';
   
   const Dashboard = (props) => {
     // State to track the active tab
     const [activeTab, setActiveTab] = useState("1");
-    const tournaments = useSelector(selectAllTournaments);
+    const currentTournaments = useSelector(selectCurrentTournaments);
+    const pastTournaments = useSelector(selectPastTournaments);
+    const futureTournaments = useSelector(selectFutureTournaments);
+
+
+
   
     // Function to toggle the active tab
     const toggleTab = (tab) => {
@@ -54,23 +59,37 @@ import {
         <TabContent activeTab={activeTab} className="mt-5">
           <TabPane tabId="1">
             <Row>
-             {
-             tournaments.map((tournament)=> (
-              <TournamentCard/>
-              ))
-             }
+            {currentTournaments.map((item, idx) => {
+                 return (
+                    item && (
+                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                    )
+                );
+            })}
               
             </Row>
           </TabPane>
           <TabPane tabId="2">
            <Row>
-            <TournamentCard/>
+           {futureTournaments.map((item, idx) => {
+                 return (
+                    item && (
+                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                    )
+                );
+            })}
            </Row>
              
           </TabPane>
           <TabPane tabId="3">
             <Row>
-             <TournamentCard/>
+            {pastTournaments.map((item, idx) => {
+                 return (
+                    item && (
+                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                    )
+                );
+            })}
             </Row>
           </TabPane>
         </TabContent>
