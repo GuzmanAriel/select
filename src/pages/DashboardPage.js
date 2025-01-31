@@ -62,7 +62,7 @@ import {
             {currentTournaments.map((item, idx) => {
                  return (
                     item && (
-                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                            <TournamentCard item={item} tournamentDate="current" key={`current-tournament${idx}`}/>
                     )
                 );
             })}
@@ -74,7 +74,7 @@ import {
            {futureTournaments.map((item, idx) => {
                  return (
                     item && (
-                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                            <TournamentCard item={item} tournamentDate="future" key={`current-tournament${idx}`}/>
                     )
                 );
             })}
@@ -86,7 +86,7 @@ import {
             {pastTournaments.map((item, idx) => {
                  return (
                     item && (
-                            <TournamentCard item={item} key={`current-tournament${idx}`}/>
+                            <TournamentCard item={item} tournamentDate="past" key={`current-tournament${idx}`}/>
                     )
                 );
             })}
