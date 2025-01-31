@@ -5,6 +5,7 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import Header from './components/Header';
 import Signup from './pages/SignUpPage';
 import { selectAllTournaments} from './utils/tournaments/tournamentLists';
+import TournamentDetailsPage from './pages/TournamentDetailsPage';
 
 function App() {
   const tournamentList  = selectAllTournaments();
@@ -41,7 +42,14 @@ function App() {
         <Route 
         path="/sign-up"
         element={<Signup/>}></Route>
+
+      <Route
+            path='tournament/:tournamentId'
+            element={<TournamentDetailsPage />}
+        />
       </Routes>
+
+      
       
     </div>
   );

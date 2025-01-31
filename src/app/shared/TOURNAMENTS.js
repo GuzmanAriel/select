@@ -56,6 +56,9 @@ export const TOURNAMENTS = [
       start_time: "9:00am",
       location: "Zilker Park",
       tournament_type: "BYO4",
+      tournament_status: "Pool play",
+      total_teams: 12,
+      top_performer: "Team Titans",
       playoff_elimination_type: "Double Elimination",
       playoff_bracket_number: 1,
       prizes: {

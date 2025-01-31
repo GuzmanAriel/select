@@ -2,21 +2,16 @@ import {useState, useEffect} from 'react';
 import {
     Col,
     Card,
-    CardBody,
-    CardTitle,
-    CardText,
-    Button,
   } from 'reactstrap';
-  
+  import { Link } from 'react-router-dom';
   import {useSpring, animated} from 'react-spring';
   import CurrentTournamentCardBody from './CurrentTournamentCardBody';
   import FutureTournamentCardBody from './FutureTournamentCardBody';
   import PastTournamentCardBody from './PastTournamentCardBody';
 
 const TournamentCard = ({ item, tournamentDate }) => {
-    
+    const {id} = item;
     const [toggle, setToggle] = useState(false);
-    console.log('%csrc/components/card/TournamentCard.js:16 tournamentDate', 'color: #007acc;', tournamentDate);
 
     const animatedStyle = useSpring({
         opacity: toggle ? 1 : 0,
@@ -31,12 +26,13 @@ const TournamentCard = ({ item, tournamentDate }) => {
     return (
         <Col sm="6">
             <animated.div style={animatedStyle}>
-                <Card className="bg-transparent mb-5">
-                {tournamentDate === 'current' && <CurrentTournamentCardBody item={item} />}
-                {tournamentDate === 'future' && <FutureTournamentCardBody item={item} />}
-                {tournamentDate === 'past' && <PastTournamentCardBody item={item} />}
-                    
-                </Card>
+                <Link to={`${id}`} className="card-link">
+                    <Card className="bg-transparent mb-5">
+                    {tournamentDate === 'current' && <CurrentTournamentCardBody item={item} />}
+                    {tournamentDate === 'future' && <FutureTournamentCardBody item={item} />}
+                    {tournamentDate === 'past' && <PastTournamentCardBody item={item} />}
+                    </Card>
+                </Link>
             </animated.div>
         </Col>
 
