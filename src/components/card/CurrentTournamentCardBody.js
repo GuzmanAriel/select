@@ -58,9 +58,11 @@ const CurrentTournamentCardBody = ({ item}) => {
                     
                 <CardText className="d-flex justify-content-between align-items-center">
                     <div className="card-current-data mt-2">Total Teams: {total_teams}</div>
-                    <Link to={`${id}`} className="card-view-details">View Details <svg width="11" height="14" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.24 8.03L4.76 4.5L1.24 0.970001" stroke="#FAD703" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
+                    <Link to={`${id}`} className="card-view-details">
+                        <span>View Details </span>
+                        <svg width="11" height="14" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.24 8.03L4.76 4.5L1.24 0.970001" stroke="#FAD703" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </Link>
                 </CardText>
             </div>

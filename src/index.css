@@ -343,6 +343,10 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   font-size:18px;
 }
 
+.card-view-details span {
+  margin-right: 5px;
+}
+
 .card-view-details:visited {
   color:#FAD703;
   text-decoration: none;
