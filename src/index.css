@@ -14,7 +14,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background:rgb(var(--bs-primary));
 }
-
+a {
+  color:inherit;
+}
 img {
   max-width: 100%;
 }
@@ -267,7 +269,7 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
     background-color: rgba(22, 27, 31, .8);
     width: 100%;
     margin-bottom: 0!important;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .card-image {
@@ -292,7 +294,19 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   margin-bottom: 2px;
 }
 
-.calendar-icon svg, .location-icon svg{
+.elimination-icon {
+  width:15px;
+  margin-right: 8px;
+  margin-bottom: 1px;
+}
+
+.team-icon {
+  width: 18px;
+  margin-right: 8px;
+  margin-bottom: 1px;
+}
+
+.calendar-icon svg, .location-icon svg, .team-icon svg, .elimination-icon svg{
   fill: #FAD703;
 }
 
@@ -308,7 +322,10 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   font-weight: bold;
   margin-top: 10px;
   margin-bottom:10px;
+  width: max-content;
+  font-size: 15px;
 }
+
 
 .card-current-data {
   border-radius: 999999px;
@@ -316,29 +333,26 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   font-weight: bold;
   border: 1px solid #dee2e6;
   color: #dee2e6;
-}
-
-.card-heading {
-  display: flex;
-  flex-direction: column;
+  width: max-content;
+  font-size: 15px;
 }
 
 .card-view-details {
   color:#FAD703;
   text-decoration: none;
-  font-size:20px;
+  font-size:18px;
 }
 
 .card-view-details:visited {
   color:#FAD703;
   text-decoration: none;
-  font-size:20px;
+  font-size:15px;
 }
 
 .card-view-details:hover {
   color:#FAD703;
   
-  font-size:20px;
+  font-size:15px;
 }
 
 .card-link:hover .card-view-details {
@@ -347,6 +361,7 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 
 .card-link img { 
   transition: all 1s;
+  object-fit: cover;
 }
 
 .card-link:hover img {
@@ -354,14 +369,18 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 }
 
 @media (min-width: 768px) { 
-  .card-heading {
-    display: flex;
-    flex-direction: row;
-  }
 
   .card-status {
     margin-top:0;
     margin-bottom:0px;
   }
+
+  .card-view-details, .card-view-details:visited, .card-view-details:hover{
+    font-size:18px;
+  }
+
+  .card-bottom {
+    padding: 20px;
+}
 }
 

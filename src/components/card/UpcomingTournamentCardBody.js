@@ -1,14 +1,12 @@
 import {
-    Col,
-    Card,
     CardBody,
     CardTitle,
     CardText,
-    Button,
   } from 'reactstrap';
+  import { Link } from 'react-router-dom';
 
-const FutureTournamentCardBody = ({ item}) => {
-    const { name, date_utc, start_time, tournament_type, playoff_elimination_type, location} = item;
+const UpcomingTournamentCardBody = ({ item}) => {
+    const { id, name, date_utc, start_time, tournament_type, playoff_elimination_type, location, total_teams} = item;
    return (
     <>
         <CardBody>
@@ -27,8 +25,13 @@ const FutureTournamentCardBody = ({ item}) => {
                         </span>
                         <span>{location}</span>
                     </div>
-                <CardText className="d-flex justify-content-between">
-                    <div>{tournament_type} | {playoff_elimination_type}</div>
+                    <CardText className="d-flex justify-content-between">
+                    <div className="card-current-data mt-2">Total Teams: {total_teams}</div>
+                    <Link to={`${id}`} className="card-view-details">View Details 
+                        <svg width="11" height="14" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.24 8.03L4.76 4.5L1.24 0.970001" stroke="#FAD703" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </Link>
                 </CardText>
             </div>
             
@@ -38,4 +41,4 @@ const FutureTournamentCardBody = ({ item}) => {
    ) 
 }
 
-export default FutureTournamentCardBody;
+export default UpcomingTournamentCardBody;

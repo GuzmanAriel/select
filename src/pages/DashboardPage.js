@@ -9,14 +9,14 @@ import {
   } from 'reactstrap';
   import { useState } from 'react';
   import TournamentCard from '../components/card/TournamentCard';
-  import {selectCurrentTournaments, selectPastTournaments, selectFutureTournaments } from '../features/tournaments/tournamentsSlice';
+  import {selectCurrentTournaments, selectPastTournaments, selectUpcomingTournaments } from '../features/tournaments/tournamentsSlice';
   
   const Dashboard = (props) => {
     // State to track the active tab
     const [activeTab, setActiveTab] = useState("1");
     const currentTournaments = useSelector(selectCurrentTournaments);
     const pastTournaments = useSelector(selectPastTournaments);
-    const futureTournaments = useSelector(selectFutureTournaments);
+    const upcomingTournaments = useSelector(selectUpcomingTournaments);
 
 
 
@@ -71,10 +71,10 @@ import {
           </TabPane>
           <TabPane tabId="2">
            <Row>
-           {futureTournaments.map((item, idx) => {
+           {upcomingTournaments.map((item, idx) => {
                  return (
                     item && (
-                            <TournamentCard item={item} tournamentDate="future" key={`current-tournament${idx}`}/>
+                            <TournamentCard item={item} tournamentDate="Upcoming" key={`current-tournament${idx}`}/>
                     )
                 );
             })}

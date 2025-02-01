@@ -6,7 +6,7 @@ import {
   import { Link } from 'react-router-dom';
   import {useSpring, animated} from 'react-spring';
   import CurrentTournamentCardBody from './CurrentTournamentCardBody';
-  import FutureTournamentCardBody from './FutureTournamentCardBody';
+  import UpcomingTournamentCardBody from './UpcomingTournamentCardBody';
   import PastTournamentCardBody from './PastTournamentCardBody';
 
 const TournamentCard = ({ item, tournamentDate }) => {
@@ -24,12 +24,12 @@ const TournamentCard = ({ item, tournamentDate }) => {
     }, []);
 
     return (
-        <Col sm="6">
+        <Col sm="12" md="6">
             <animated.div style={animatedStyle}>
                 <Link to={`${id}`} className="card-link">
                     <Card className="bg-transparent mb-5">
                     {tournamentDate === 'current' && <CurrentTournamentCardBody item={item} />}
-                    {tournamentDate === 'future' && <FutureTournamentCardBody item={item} />}
+                    {tournamentDate === 'Upcoming' && <UpcomingTournamentCardBody item={item} />}
                     {tournamentDate === 'past' && <PastTournamentCardBody item={item} />}
                     </Card>
                 </Link>

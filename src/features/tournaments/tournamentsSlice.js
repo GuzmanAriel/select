@@ -28,7 +28,7 @@ export const selectPastTournaments = (state) => {
     return state.tournaments.tournamentsArray.filter(tournament => tournament.date_utc < today);
 };
 
-export const selectFutureTournaments = (state) => {
+export const selectUpcomingTournaments = (state) => {
     //return filter of past tournaments
     const today = new Date().toISOString();
     return state.tournaments.tournamentsArray.filter(tournament => tournament.date_utc > today);
