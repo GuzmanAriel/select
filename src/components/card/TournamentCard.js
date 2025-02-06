@@ -26,7 +26,7 @@ const TournamentCard = ({ item, tournamentDate }) => {
     return (
         <Col sm="12" md="6">
             <animated.div style={animatedStyle}>
-                <Link to={`${id}`} className="card-link">
+                <Link to={`/tournament/${id}`} className="card-link">
                     <Card className="bg-transparent mb-5">
                     {tournamentDate === 'current' && <CurrentTournamentCardBody item={item} />}
                     {tournamentDate === 'Upcoming' && <UpcomingTournamentCardBody item={item} />}
