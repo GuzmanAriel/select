@@ -372,6 +372,14 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   transform: scale(1.2, 1.2);
 }
 
+.card-current-data__winner {
+  color:#FAD703;
+  font-weight: bold;
+}
+
+.card-first-place {
+  margin-right: 5px;
+}
 @media (min-width: 768px) { 
 
   .card-status {

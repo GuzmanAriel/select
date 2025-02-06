@@ -10,7 +10,7 @@ const UpcomingTournamentCardBody = ({ item}) => {
    return (
     <>
         <CardBody>
-            <img className="w-100 card-image" src="https://picsum.photos/200/300"/>
+            <img className="w-100 card-image" src="https://picsum.photos/400/200"/>
             <div className="border-b-1 border-white justify-content-between mb-4 card-bottom">
                 <CardTitle className="fw-bold mb-3 card-title">{name}</CardTitle>
                 <div className="d-flex align-items-end justify-content-between mt-3 mb-1">
