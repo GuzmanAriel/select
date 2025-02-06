@@ -9,7 +9,7 @@ import TournamentDetailsPage from './pages/TournamentDetailsPage';
 
 function App() {
   const tournamentList  = selectAllTournaments();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
       <header className="border-secondary border-bottom">
