@@ -212,13 +212,22 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   text-decoration: none;
 }
 
-.ts-dashboard { 
-  margin-top: 6rem;
+.ts-alignment {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right:20px;
+}
+
+.ts-create-tournament {
+  margin-top: 50px;
+  display: flex;
+  justify-content: end;
+}
+
+.ts-dashboard { 
+  margin-top: 100px;
 }
 
 .ts-dashboard ul {
@@ -230,6 +239,22 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   margin-left: auto;
   margin-right: auto;
 }
+
+.primary-cta {
+  background: #FAD703;
+  color: #161B1F;
+  border: 1px solid #FAD703;
+}
+
+.primary-cta:hover {
+  background: #161B1F;
+  color: #FAD703;
+  border: 1px solid #FAD703;
+}
+
+ .primary-cta.create-tournament {
+  font-weight: bold;
+ }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   background: transparent;
@@ -379,6 +404,24 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 
 .card-first-place {
   margin-right: 5px;
+}
+
+
+
+.react-datepicker-wrapper {
+  display: block;
+}
+
+.react-datepicker-wrapper input{
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 10px 5px 35px;
+}
+
+.react-datepicker-wrapper svg {
+  fill: white; 
+  margin-right: 2px;
 }
 @media (min-width: 768px) { 
 

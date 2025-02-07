@@ -1,7 +1,6 @@
 
 import {
     FormGroup,
-    Input,
     Label,
     Button,
   } from 'reactstrap';

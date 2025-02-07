@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, Link } from "react-router-dom";
 import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import Header from './components/Header';
 import Signup from './pages/SignUpPage';
 import { selectAllTournaments } from './utils/tournaments/tournamentLists';
 import TournamentDetailsPage from './pages/TournamentDetailsPage';
+import CreateTournamentButton from './components/createTournaments/CreateTournamentButton';
+import CreateATournament from './pages/CreateTournamentPage';
 
 function App() {
   const tournamentList = selectAllTournaments();
@@ -22,6 +24,11 @@ function App() {
         <Header isLoggedIn={isLoggedIn} />
       </header>
 
+      <div className="ts-alignment ts-create-tournament">
+        <Link to={`/create-tournament`}>
+         <CreateTournamentButton />
+        </Link>
+      </div>
       <Routes>
         {/* Redirect to /dashboard if logged in */}
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
@@ -45,6 +52,8 @@ function App() {
         <Route path="/sign-up" element={<Signup />} />
 
         <Route path="tournament/:tournamentId" element={<TournamentDetailsPage />} />
+
+        <Route path="/create-tournament" element={<CreateATournament />} />
       </Routes>
     </div>
   );

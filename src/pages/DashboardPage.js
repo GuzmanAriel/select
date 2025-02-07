@@ -29,7 +29,7 @@ import {
     };
   
     return (
-      <div id="dashboard" className="ts-dashboard">
+      <div id="dashboard" className="ts-alignment ts-dashboard">
         <Nav tabs className="border-0">
           <NavItem>
             <NavLink
