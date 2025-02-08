@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormGroup, Label, Button } from "reactstrap";
 import DatePicker from "react-datepicker";
@@ -72,15 +72,11 @@ const CreateATournament = () => {
               <Field type="hidden" name="zip" />
 
               {/* Submit Button */}
-              <FormGroup className="mt-3 float-end" color="primary">
+              <FormGroup className="mt-3 primary-cta float-end" color="primary">
                 <Button type="submit" color="primary">
                   Create Tournament
                 </Button>
               </FormGroup>
-              <div className="clearfix"></div>
-              <p className="mt-4">
-                Don't have an account? <a href="/sign-up">Sign up here</a>
-              </p>
             </Form>
           );
         }}

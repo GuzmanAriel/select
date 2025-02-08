@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-const GOOGLE_API_KEY = "AIzaSyDsb32EFWC9jVcxoQe6chZ55HRU6ibVC6Y"; // Store in environment variables
-
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const PlaceAutocompleteComponent = (props) => {
+
   const {setFieldValue} = props;
   const inputSearch = useRef(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -34,6 +34,7 @@ const PlaceAutocompleteComponent = (props) => {
 
         searchBox.addListener("places_changed", () => {
           const places = searchBox.getPlaces();
+
           setFieldValue('location', places[0].formatted_address);
           if (places.length == 0) {
             return;
@@ -51,14 +52,6 @@ const PlaceAutocompleteComponent = (props) => {
     <>
     {/* Container for Google Places input */}
     <input name="location" ref={inputSearch} className="form-control bg-transparent text-white"/>
-
-      {/* Display Selected Place Info */}
-      {selectedPlace && (
-        <div style={{ marginTop: "20px" }}>
-          <h3>Selected Place:</h3>
-          <pre>{JSON.stringify(selectedPlace, null, 2)}</pre>
-        </div>
-      )}
     </>
       
   );
