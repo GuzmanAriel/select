@@ -21,6 +21,9 @@ const CreateATournament = () => {
           playoffType: "",
           playoffBracketNumber: "",
           prizes: false,
+          firstPlacePrize: "",
+          secondPlacePrize: "",
+          thirdPlacePrize: "",
           additionalNotes: ""
         }}
         onSubmit={(values, { resetForm }) => {
@@ -109,6 +112,27 @@ const CreateATournament = () => {
                 </label>
 
               </FormGroup>
+
+              {values.prizes && (
+                <div className="form-prizes-list">
+                    <FormGroup>
+                        <Label htmlFor="firstPlacePrize">First Place Prize</Label>
+                        <Field name="firstPlacePrize" className="form-control bg-transparent text-white" />
+                        <ErrorMessage name="firstPlacePrize">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="secondPlacePrize">Second Place Prize</Label>
+                        <Field name="secondPlacePrize" className="form-control bg-transparent text-white" />
+                        <ErrorMessage name="secondPlacePrize">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="thirdPlacePrize">Third Place Prize</Label>
+                        <Field name="thirdPlacePrize" className="form-control bg-transparent text-white" />
+                        <ErrorMessage name="thirdPlacePrize">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                    </FormGroup>
+                </div>
+                
+              )}
 
               <FormGroup className="mt-5">
                 <Label htmlFor="additionalNotes">Additional Notes:</Label>

@@ -439,6 +439,10 @@ textarea.form-control {
 .form-prizes span {
   margin-left: 5px;
 }
+
+.form-prizes label, .form-prizes input {
+  cursor: pointer;
+}
 @media (min-width: 768px) { 
 
   .card-status {
