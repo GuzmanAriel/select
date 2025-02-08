@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormGroup, Label, Button } from "reactstrap";
 import DatePicker from "react-datepicker";
@@ -6,52 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { validateCreateTournamentForms } from "../utils/tournaments/validateCreateTournamentForm";
 import PlaceAutocompleteComponent from "../components/google/PlacesAutoComplete";
 
-// ✅ Google API Key (Use Environment Variables in Production)
-const GOOGLE_API_KEY = "AIzaSyDsb32EFWC9jVcxoQe6chZ55HRU6ibVC6Y"; // Replace with your actual API key
-
 const CreateATournament = () => {
-  const autocompleteRef = useRef(null); // Input field reference
-  const autocompleteInstance = useRef(null); // Google Autocomplete instance
-  let setFieldValueRef = useRef(null); // Formik's setFieldValue reference
-  let infoWindow;
-  // ✅ Load Google Places API **Once** on Component Mount
-  useEffect(() => {
-    
-    // const loadGoogleMapsScript = () => {
-    //   if (window.google && window.google.maps) {
-    //     initializeAutocomplete();
-    //     return;
-    //   }
 
-    //   const script = document.createElement("script");
-    //   script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places`;
-    //   script.async = true;
-    //   script.defer = true;
-    //   script.onload = initializeAutocomplete;
-    //   document.body.appendChild(script);
-    // };
-
-
-    // const initializeAutocomplete = () => {
-    //   if (!autocompleteRef.current || autocompleteInstance.current) return;
-
-    //   autocompleteInstance.current = new window.google.maps.places.Autocomplete(
-    //     autocompleteRef.current,
-    //     { types: ["geocode"] } // Suggests addresses
-    //   );
-
-    //   autocompleteInstance.id = "place-autocomplete-input";
-
-    //   autocompleteInstance.current.addListener("place_changed", async ({ place }) => {
-    //     console.log('%csrc/pages/CreateTournamentPage.js:45 place', 'color: #007acc;', place);
-    //     await place.fetchFields({
-    //         fields: ["displayName", "formattedAddress", "location"],
-    //       });
-    //   });
-    // };
-
-    // loadGoogleMapsScript();
-  }, []);
 
   return (
     <div className="ts-form">
@@ -60,21 +16,15 @@ const CreateATournament = () => {
         initialValues={{
           name: "",
           date: new Date(),
-          time: "",
-          address: "",
-          city: "",
-          state: "",
-          zip: "",
+          location: "",
         }}
         onSubmit={(values, { resetForm }) => {
           console.log("Form values:", values);
           resetForm();
         }}
-        
+        validate={validateCreateTournamentForms}
       >
         {({ values, setFieldValue }) => {
-          // ✅ Store setFieldValue in ref so Google Autocomplete can use it
-          setFieldValueRef.current = setFieldValue;
 
           return (
             <Form>
@@ -111,9 +61,9 @@ const CreateATournament = () => {
 
               {/* Google Places Autocomplete Input */}
               <FormGroup>
-                <Label htmlFor="address">Address</Label>
-                <PlaceAutocompleteComponent/>
-                <ErrorMessage name="address">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                <Label htmlFor="location">Address</Label>
+                <PlaceAutocompleteComponent setFieldValue={setFieldValue}/>
+                <ErrorMessage name="location">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
               {/* Hidden Fields for City, State, ZIP */}

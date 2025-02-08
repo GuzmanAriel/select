@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 const GOOGLE_API_KEY = "AIzaSyDsb32EFWC9jVcxoQe6chZ55HRU6ibVC6Y"; // Store in environment variables
 
-const PlaceAutocompleteComponent = () => {
-  const autocompleteContainerRef = useRef(null);
+const PlaceAutocompleteComponent = (props) => {
+  const {setFieldValue} = props;
   const inputSearch = useRef(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
 
@@ -28,17 +28,13 @@ const PlaceAutocompleteComponent = () => {
       try {
         // @ts-ignore
         await window.google.maps.importLibrary("places");
-        // console.log('%csrc/components/google/PlacesAutoComplete.js:30 window.google.maps.places', 'color: #007acc;', window.google.maps.places);
-        // console.log('%csrc/components/google/PlacesAutoComplete.js:30 window.google.maps.places', 'color: #007acc;', window.google.maps.places.SearchBox);
-        // ✅ Create and append the PlaceAutocompleteElement
-        // @ts-ignore
-        // const placeAutocomplete = new window.google.maps.places.PlaceAutocompleteElement();
 
 
         const searchBox = new window.google.maps.places.SearchBox(inputSearch.current);
 
         searchBox.addListener("places_changed", () => {
           const places = searchBox.getPlaces();
+          setFieldValue('location', places[0].formatted_address);
           if (places.length == 0) {
             return;
           }
@@ -52,10 +48,9 @@ const PlaceAutocompleteComponent = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Google Places Autocomplete</h2>
-      {/* Container for Google Places input */}
-      <input ref={inputSearch}/>
+    <>
+    {/* Container for Google Places input */}
+    <input name="location" ref={inputSearch} className="form-control bg-transparent text-white"/>
 
       {/* Display Selected Place Info */}
       {selectedPlace && (
@@ -64,7 +59,8 @@ const PlaceAutocompleteComponent = () => {
           <pre>{JSON.stringify(selectedPlace, null, 2)}</pre>
         </div>
       )}
-    </div>
+    </>
+      
   );
 };
 
