@@ -423,6 +423,11 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   fill: white; 
   margin-right: 2px;
 }
+
+textarea.form-control {
+  min-height: calc(8.5em + .75rem + 2px);
+
+}
 @media (min-width: 768px) { 
 
   .card-status {

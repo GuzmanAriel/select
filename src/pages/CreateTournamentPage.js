@@ -17,6 +17,10 @@ const CreateATournament = () => {
           name: "",
           date: new Date(),
           location: "",
+          tournamantType: "",
+          playoffType: "",
+          playoffBracketNumber: "",
+          additionalNotes: ""
         }}
         onSubmit={(values, { resetForm }) => {
           console.log("Form values:", values);
@@ -66,13 +70,35 @@ const CreateATournament = () => {
                 <ErrorMessage name="location">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
-              {/* Hidden Fields for City, State, ZIP */}
-              <Field type="hidden" name="city" />
-              <Field type="hidden" name="state" />
-              <Field type="hidden" name="zip" />
+              <FormGroup>
+                <Label htmlFor="tournamentType">Tournament Type</Label>
+                <Field name="tournamentType" className="form-control bg-transparent text-white" placeholder="Example: 3V3, BYO4 etc."/>
+                <ErrorMessage name="tournamentType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
 
+              <FormGroup>
+                <Label htmlFor="playoffType">Playoff Type</Label>
+                <Field name="playoffType" as="select" className="form-control bg-transparent text-white">
+                  <option value="">Select Type</option>
+                  <option value="single">Single Elimination</option>
+                  <option value="double">Double Elimination</option>
+                </Field>
+                <ErrorMessage name="playoffType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="playoffBracketNumber">How many playoff brackets?</Label>
+                <Field name="playoffBracketNumber" className="form-control bg-transparent text-white"/>
+                <ErrorMessage name="playoffBracketNumber">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="additionalNotes">Additional Notes:</Label>
+                <Field name="additionalNotes" component="textarea" className="form-control bg-transparent text-white" placeholder="Example: parking instructions, notes, etc."/>
+                <ErrorMessage name="additionalNotes">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
               {/* Submit Button */}
-              <FormGroup className="mt-3 primary-cta float-end" color="primary">
+              <FormGroup className="mt-3 float-end" color="primary">
                 <Button type="submit" color="primary">
                   Create Tournament
                 </Button>
