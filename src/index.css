@@ -226,6 +226,10 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   justify-content: end;
 }
 
+.ts-form label {
+  font-size: 20px;
+}
+
 .ts-dashboard { 
   margin-top: 100px;
 }
@@ -426,7 +430,14 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
 
 textarea.form-control {
   min-height: calc(8.5em + .75rem + 2px);
+}
 
+.form-prizes .form-prizes-yes{
+  margin-right: 10px;
+}
+
+.form-prizes span {
+  margin-left: 5px;
 }
 @media (min-width: 768px) { 
 

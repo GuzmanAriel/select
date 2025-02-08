@@ -20,6 +20,7 @@ const CreateATournament = () => {
           tournamantType: "",
           playoffType: "",
           playoffBracketNumber: "",
+          prizes: false,
           additionalNotes: ""
         }}
         onSubmit={(values, { resetForm }) => {
@@ -40,7 +41,7 @@ const CreateATournament = () => {
               </FormGroup>
 
               {/* Date Picker */}
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="date">Date</Label>
                 <DatePicker
                   showIcon
@@ -52,7 +53,7 @@ const CreateATournament = () => {
               </FormGroup>
 
               {/* Time Selection */}
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="time">Start Time</Label>
                 <Field name="time" as="select" className="form-control bg-transparent text-white">
                   <option value="">Select Time</option>
@@ -64,19 +65,19 @@ const CreateATournament = () => {
               </FormGroup>
 
               {/* Google Places Autocomplete Input */}
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="location">Address</Label>
                 <PlaceAutocompleteComponent setFieldValue={setFieldValue}/>
                 <ErrorMessage name="location">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="tournamentType">Tournament Type</Label>
                 <Field name="tournamentType" className="form-control bg-transparent text-white" placeholder="Example: 3V3, BYO4 etc."/>
                 <ErrorMessage name="tournamentType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="playoffType">Playoff Type</Label>
                 <Field name="playoffType" as="select" className="form-control bg-transparent text-white">
                   <option value="">Select Type</option>
@@ -86,13 +87,30 @@ const CreateATournament = () => {
                 <ErrorMessage name="playoffType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
-              <FormGroup>
+              <FormGroup className="mt-5">
                 <Label htmlFor="playoffBracketNumber">How many playoff brackets?</Label>
                 <Field name="playoffBracketNumber" className="form-control bg-transparent text-white"/>
                 <ErrorMessage name="playoffBracketNumber">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
-              <FormGroup>
+              <FormGroup className="mt-5">
+                <label className="form-prizes">
+                    <div id="prizes" className="form-label">Will there Be Prizes</div>
+                    <div role="group" aria-labelledby="prizes">
+                        <label className="form-prizes-yes">
+                            <Field type="radio" name="prizes" value={true} checked={values.prizes === true} onChange={() => setFieldValue("prizes", true)}/>
+                                <span>Yes</span>
+                        </label>
+                        <label>
+                            <Field type="radio" name="prizes" value={false} checked={values.prizes === false} onChange={() => setFieldValue("prizes", false)}/>
+                            <span>No</span>
+                        </label>
+                    </div>
+                </label>
+
+              </FormGroup>
+
+              <FormGroup className="mt-5">
                 <Label htmlFor="additionalNotes">Additional Notes:</Label>
                 <Field name="additionalNotes" component="textarea" className="form-control bg-transparent text-white" placeholder="Example: parking instructions, notes, etc."/>
                 <ErrorMessage name="additionalNotes">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
