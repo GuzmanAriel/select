@@ -1,12 +1,34 @@
+import {useSelector} from 'react-redux';
 import {
     CardBody,
     CardTitle,
     CardText,
+    Row
   } from 'reactstrap';
   import { Link } from 'react-router-dom';
+  import Error from '../Error';
+  import Loading from '../Loading';
 
 const CurrentTournamentCardBody = ({ item}) => {
     const { id, name, date_utc, start_time, tournament_type, playoff_elimination_type, location, tournament_status, total_teams} = item;
+    const isLoading = useSelector((state) => state.tournaments.isLoading);
+    const errMsg = useSelector((state) => state.tournaments.errMsg);
+    
+    if (isLoading) {
+        return (
+            <Row>
+                <Loading />
+            </Row>
+        );
+    }
+
+    if (errMsg) {
+        return (
+            <Row>
+                <Error errMsg={errMsg} />
+            </Row>
+        );
+    }
    return (
     <>
         <CardBody>

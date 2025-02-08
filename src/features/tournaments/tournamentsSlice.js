@@ -1,14 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { TOURNAMENTS } from '../../app/shared/TOURNAMENTS';
 
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { baseUrl } from '../../app/shared/baseUrl';
+
+
+export const fetchTournaments = createAsyncThunk(
+    'tournaments/fetchTournaments',
+    async () => {
+        const response = await fetch(baseUrl + 'tournaments');
+        if (!response.ok) {
+            return Promise.reject('Unable to fetch, status: ' + response.status);
+        }
+        const data = await response.json();
+        return data;
+    }
+);
 
 const initialState = {
-    tournamentsArray: TOURNAMENTS
+    tournamentsArray: [],
+    isLoading: true,
+    errMsg: ''
 };
 
 const tournamentsSlice = createSlice({
     name: 'tournaments',
-    initialState
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchTournaments.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchTournaments.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.errMsg = '';
+                state.tournamentsArray = action.payload;
+            })
+            .addCase(fetchTournaments.rejected, (state, action) => {
+                state.isLoading = false;
+                state.errMsg = action.error ? action.error.message : 'Fetch failed';
+            });
+    }
 });
 
 export const tournamentsReducer = tournamentsSlice.reducer;

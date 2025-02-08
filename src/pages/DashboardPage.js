@@ -9,18 +9,18 @@ import {
   } from 'reactstrap';
   import { useState } from 'react';
   import TournamentCard from '../components/card/TournamentCard';
-  import {selectCurrentTournaments, selectPastTournaments, selectUpcomingTournaments } from '../features/tournaments/tournamentsSlice';
+  import {selectAllTournaments, selectCurrentTournaments, selectPastTournaments, selectUpcomingTournaments } from '../features/tournaments/tournamentsSlice';
+  
   
   const Dashboard = (props) => {
+
     // State to track the active tab
     const [activeTab, setActiveTab] = useState("1");
+    const allTournaments = useSelector(selectAllTournaments);
     const currentTournaments = useSelector(selectCurrentTournaments);
     const pastTournaments = useSelector(selectPastTournaments);
     const upcomingTournaments = useSelector(selectUpcomingTournaments);
 
-
-
-  
     // Function to toggle the active tab
     const toggleTab = (tab) => {
       if (activeTab !== tab) {

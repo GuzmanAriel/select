@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, Navigate, Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { fetchTournaments } from './features/tournaments/tournamentsSlice';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import Header from './components/Header';
@@ -12,6 +14,12 @@ import CreateATournament from './pages/CreateTournamentPage';
 function App() {
   const tournamentList = selectAllTournaments();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+console.log('%csrc/App.js:17 tournamentList', 'color: #007acc;', tournamentList);
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTournaments());
+    }, [dispatch]);
 
   // Protected Route Component
   const ProtectedRoute = ({ children }) => {
