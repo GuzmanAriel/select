@@ -34,8 +34,7 @@ const PlaceAutocompleteComponent = (props) => {
 
         searchBox.addListener("places_changed", () => {
           const places = searchBox.getPlaces();
-
-          setFieldValue('location', places[0].formatted_address);
+          setFieldValue('location', places[0].name);
           if (places.length == 0) {
             return;
           }
