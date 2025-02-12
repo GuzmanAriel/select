@@ -15,6 +15,31 @@ export const fetchTournaments = createAsyncThunk(
     }
 );
 
+/**
+ * Post a new comment to the API
+ */
+export const postTournament = createAsyncThunk(
+    'tournaments/postTournament',
+    async (comment, { rejectWithValue }) => {
+        try {
+            const response = await fetch(baseUrl + 'tournaments', {
+                method: "POST",
+                body: JSON.stringify(comment),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to post tournament: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 const initialState = {
     tournamentsArray: [],
     isLoading: true,
@@ -38,6 +63,14 @@ const tournamentsSlice = createSlice({
             .addCase(fetchTournaments.rejected, (state, action) => {
                 state.isLoading = false;
                 state.errMsg = action.error ? action.error.message : 'Fetch failed';
+            })
+
+            .addCase(postTournament.fulfilled, (state, action) => {
+                state.tournamentsArray.push(action.payload);
+            })
+            
+            .addCase(postTournament.rejected, (state, action) => {
+                alert(`Your tournament could not be posted\nError: ` + (action.payload || 'Fetch Failed'));
             });
     }
 });

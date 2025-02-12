@@ -1,13 +1,36 @@
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormGroup, Label, Button } from "reactstrap";
+import { useDispatch } from 'react-redux';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { validateCreateTournamentForm } from "../utils/tournaments/validateCreateTournamentForm";
 import PlaceAutocompleteComponent from "../components/google/PlacesAutoComplete";
 import { TIMES } from "../app/shared/TIMES";
-const CreateATournament = () => {
+import { postTournament } from "../features/tournaments/tournamentsSlice";
 
+const CreateATournament = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values) => {
+  
+      const tournament = {
+          id: values.id,
+          name: values.name,
+          date_utc: values.date,
+          start_time: values.time,
+          location: values.location,
+          tournament_type: values.tournamentType,
+          playoff_elimination_type: values.playoffType,
+          playoffBracketNumber: values.playoffBracketNumber,
+          prizes: values.prizes,
+          first_place_prize: values.firstPlacePrize,
+          second_place_prize: values.secondPlacePrize,
+          third_place_prize: values.thirdPlacePrize,
+          additionalNotes: values.additionalNotes,
+      };
+      dispatch(postTournament(tournament));
+  };
 
   return (
     <div className="ts-form">
@@ -28,10 +51,7 @@ const CreateATournament = () => {
           additionalNotes: "",
         }}
         validate={validateCreateTournamentForm} // Use the function here
-        onSubmit={(values, { resetForm }) => {
-          console.log("Form values:", values);
-          resetForm();
-        }}
+        onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => {
 
@@ -87,8 +107,8 @@ const CreateATournament = () => {
                 <Label htmlFor="playoffType">Playoff Type</Label>
                 <Field name="playoffType" as="select" className="form-control bg-transparent text-white">
                   <option value="">Select Type</option>
-                  <option value="single">Single Elimination</option>
-                  <option value="double">Double Elimination</option>
+                  <option value="Single Elimination">Single Elimination</option>
+                  <option value="Double Elimination">Double Elimination</option>
                 </Field>
                 <ErrorMessage name="playoffType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>

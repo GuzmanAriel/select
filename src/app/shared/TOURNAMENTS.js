@@ -10,11 +10,10 @@ export const TOURNAMENTS = [
       tournament_type: "BYO4",
       playoff_elimination_type: "Single Elimination",
       playoff_bracket_number: 2,
-      prizes: {
-        first_place: "$1000 and gift card",
-        second_place: "$500 and gift card",
-        third_place: "$100"
-      },
+      prizes: true,
+      first_place_prize: "$1000 and gift card",
+      second_place_prize: "$500 and gift card",
+      third_place_prize: "$100",
       additional_notes: "We will be in the far side of Zilker park, parking is available in the lot across the park or accross the street"
     },
     {
@@ -26,11 +25,10 @@ export const TOURNAMENTS = [
       tournament_type: "BYO3",
       playoff_elimination_type: "Single Elimination",
       playoff_bracket_number: 1,
-      prizes: {
-        first_place: "$1000 and gift card",
-        second_place: "$500 and gift card",
-        third_place: "$100"
-      },
+      prizes: true,
+      first_place_prize: "$1000 and gift card",
+      second_place_prize: "$500 and gift card",
+      third_place_prize: "$100",
       additional_notes: "We will be in the far side of Zilker park, parking is available in the lot across the park or accross the street"
     },
     {
@@ -42,11 +40,10 @@ export const TOURNAMENTS = [
       tournament_type: "BYO4",
       playoff_elimination_type: "Double Elimination",
       playoff_bracket_number: 1,
-      prizes: {
-        first_place: "$1000 and gift card",
-        second_place: "$500 and gift card",
-        third_place: "$100"
-      },
+      prizes: true,
+      first_place_prize: "$1000 and gift card",
+      second_place_prize: "$500 and gift card",
+      third_place_prize: "$100",
       additional_notes: "We will be in the far side of Zilker park, parking is available in the lot across the park or accross the street"
     },
     {
@@ -61,11 +58,10 @@ export const TOURNAMENTS = [
       top_performer: "Team Titans",
       playoff_elimination_type: "Double Elimination",
       playoff_bracket_number: 1,
-      prizes: {
-        first_place: "$1000 and gift card",
-        second_place: "$500 and gift card",
-        third_place: "$100"
-      },
+      prizes: true,
+      first_place_prize: "$1000 and gift card",
+      second_place_prize: "$500 and gift card",
+      third_place_prize: "$100",
       additional_notes: "We will be in the far side of Zilker park, parking is available in the lot across the park or accross the street"
     }
 ];
