@@ -3,9 +3,9 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormGroup, Label, Button } from "reactstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { validateCreateTournamentForms } from "../utils/tournaments/validateCreateTournamentForm";
+import { validateCreateTournamentForm } from "../utils/tournaments/validateCreateTournamentForm";
 import PlaceAutocompleteComponent from "../components/google/PlacesAutoComplete";
-
+import { TIMES } from "../app/shared/TIMES";
 const CreateATournament = () => {
 
 
@@ -16,21 +16,22 @@ const CreateATournament = () => {
         initialValues={{
           name: "",
           date: new Date(),
+          time: "",
           location: "",
-          tournamantType: "",
+          tournamentType: "",
           playoffType: "",
           playoffBracketNumber: "",
           prizes: false,
           firstPlacePrize: "",
           secondPlacePrize: "",
           thirdPlacePrize: "",
-          additionalNotes: ""
+          additionalNotes: "",
         }}
+        validate={validateCreateTournamentForm} // Use the function here
         onSubmit={(values, { resetForm }) => {
           console.log("Form values:", values);
           resetForm();
         }}
-        validate={validateCreateTournamentForms}
       >
         {({ values, setFieldValue }) => {
 
@@ -60,9 +61,11 @@ const CreateATournament = () => {
                 <Label htmlFor="time">Start Time</Label>
                 <Field name="time" as="select" className="form-control bg-transparent text-white">
                   <option value="">Select Time</option>
-                  <option value="10:00 AM">10:00 AM</option>
-                  <option value="12:00 PM">12:00 PM</option>
-                  <option value="3:00 PM">3:00 PM</option>
+                  {TIMES.map((time, index) => (
+                  <option key={index} value={time}>
+                    {time}
+                  </option>
+                ))}
                 </Field>
                 <ErrorMessage name="time">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
