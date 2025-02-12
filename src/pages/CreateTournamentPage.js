@@ -38,7 +38,7 @@ const CreateATournament = () => {
       try {
         await dispatch(postTournament(tournament)).unwrap();
         resetForm();
-        navigate('/dashboard');
+        navigate('/dashboard', { state: { tab: "2" } });
     } catch (error) {
       console.error("Error creating tournament:", error);
   }

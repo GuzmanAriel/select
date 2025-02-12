@@ -10,12 +10,13 @@ import {
   import { useState } from 'react';
   import TournamentCard from '../components/card/TournamentCard';
   import {selectAllTournaments, selectCurrentTournaments, selectPastTournaments, selectUpcomingTournaments } from '../features/tournaments/tournamentsSlice';
-  
+  import { useLocation } from "react-router-dom";
   
   const Dashboard = (props) => {
+    const location = useLocation(); // Get the passed state
 
     // State to track the active tab
-    const [activeTab, setActiveTab] = useState("1");
+    const [activeTab, setActiveTab] = useState(location.state?.tab || "1"); 
     const allTournaments = useSelector(selectAllTournaments);
     const currentTournaments = useSelector(selectCurrentTournaments);
     const pastTournaments = useSelector(selectPastTournaments);
