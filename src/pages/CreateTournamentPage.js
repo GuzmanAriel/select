@@ -1,8 +1,10 @@
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Navigate } from "react-router-dom";
 import { FormGroup, Label, Button } from "reactstrap";
 import { useDispatch } from 'react-redux';
 import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { validateCreateTournamentForm } from "../utils/tournaments/validateCreateTournamentForm";
 import PlaceAutocompleteComponent from "../components/google/PlacesAutoComplete";
@@ -11,8 +13,10 @@ import { postTournament } from "../features/tournaments/tournamentsSlice";
 
 const CreateATournament = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
-  const handleSubmit = (values) => {
+  
+  const handleSubmit = async(values, { resetForm }) => {
   
       const tournament = {
           id: values.id,
@@ -29,6 +33,14 @@ const CreateATournament = () => {
           third_place_prize: values.thirdPlacePrize,
           additionalNotes: values.additionalNotes,
       };
+
+      try {
+        await dispatch(postTournament(tournament)).unwrap();
+        resetForm();
+        navigate('/dashboard');
+    } catch (error) {
+      console.error("Error creating tournament:", error);
+  }
       dispatch(postTournament(tournament));
   };
 
