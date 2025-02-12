@@ -1,7 +1,7 @@
 export const validateCreateTournamentForm = (values) => {
     const errors = {};
     const today = new Date();
-    
+    console.log('%csrc/utils/tournaments/validateCreateTournamentForm.js:4 values', 'color: #007acc;', values);
     // Name Validation
     if (!values.name) {
         errors.name = "Tournament name is required.";
@@ -31,6 +31,18 @@ export const validateCreateTournamentForm = (values) => {
     // Playoff Type Validation
     if (!values.playoffType) {
         errors.playoffType = "Playoff type is required.";
+    }
+
+    if (!values.totalTeams) {
+        errors.totalTeams = "Total Teams is required.";
+    } else if (isNaN(values.totalTeams)) {
+        errors.totalTeams = "Total Teams must be a number.";
+    }
+
+    if (!values.poolNumber) {
+        errors.poolNumber = "Pool number is required.";
+    } else if (isNaN(values.poolNumber)) {
+        errors.poolNumber = "Pool number must be a number.";
     }
 
     // Playoff Bracket Number Validation

@@ -1,6 +1,5 @@
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { Navigate } from "react-router-dom";
 import { FormGroup, Label, Button } from "reactstrap";
 import { useDispatch } from 'react-redux';
 import DatePicker from "react-datepicker";
@@ -24,9 +23,11 @@ const CreateATournament = () => {
           date_utc: values.date,
           start_time: values.time,
           location: values.location,
+          total_teams: parseInt(values.totalTeams),
           tournament_type: values.tournamentType,
           playoff_elimination_type: values.playoffType,
-          playoffBracketNumber: values.playoffBracketNumber,
+          pool_number: parseInt(values.poolNumber),
+          playoffBracketNumber: parseInt(values.playoffBracketNumber),
           prizes: values.prizes,
           first_place_prize: values.firstPlacePrize,
           second_place_prize: values.secondPlacePrize,
@@ -54,8 +55,10 @@ const CreateATournament = () => {
           time: "",
           location: "",
           tournamentType: "",
+          totalTeams: "",
           playoffType: "",
           playoffBracketNumber: "",
+          poolNumber: "",
           prizes: false,
           firstPlacePrize: "",
           secondPlacePrize: "",
@@ -113,6 +116,18 @@ const CreateATournament = () => {
                 <Label htmlFor="tournamentType">Tournament Type</Label>
                 <Field name="tournamentType" className="form-control bg-transparent text-white" placeholder="Example: 3V3, BYO4 etc."/>
                 <ErrorMessage name="tournamentType">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
+
+              <FormGroup className="mt-5">
+                <Label htmlFor="totalTeams">Total Teams</Label>
+                <Field name="totalTeams" className="form-control bg-transparent text-white"/>
+                <ErrorMessage name="totalTeams">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+              </FormGroup>
+
+              <FormGroup className="mt-5">
+                <Label htmlFor="poolNumber">How many pools?</Label>
+                <Field name="poolNumber" className="form-control bg-transparent text-white"/>
+                <ErrorMessage name="poolNumber">{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
               </FormGroup>
 
               <FormGroup className="mt-5">
