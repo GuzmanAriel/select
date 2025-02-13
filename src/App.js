@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes, Navigate, Link } from "react-router-dom";
+import { Route, Routes, Navigate, Link, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { fetchTournaments } from './features/tournaments/tournamentsSlice';
 import Login from './pages/LoginPage';
@@ -14,12 +14,12 @@ import CreateATournament from './pages/CreateTournamentPage';
 function App() {
   const tournamentList = selectAllTournaments();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-console.log('%csrc/App.js:17 tournamentList', 'color: #007acc;', tournamentList);
   const dispatch = useDispatch();
+  const location = useLocation(); // Get the current route
 
-    useEffect(() => {
-        dispatch(fetchTournaments());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchTournaments());
+  }, [dispatch]);
 
   // Protected Route Component
   const ProtectedRoute = ({ children }) => {
@@ -32,11 +32,15 @@ console.log('%csrc/App.js:17 tournamentList', 'color: #007acc;', tournamentList)
         <Header isLoggedIn={isLoggedIn} />
       </header>
 
-      <div className="ts-alignment ts-create-tournament">
-        <Link to={`/create-tournament`}>
-         <CreateTournamentButton />
-        </Link>
-      </div>
+      {/* ✅ Hide the button when the route is `/create-tournament` */}
+      {location.pathname !== "/create-tournament" && (
+        <div className="ts-alignment ts-create-tournament">
+          <Link to={`/create-tournament`}>
+            <CreateTournamentButton />
+          </Link>
+        </div>
+      )}
+
       <Routes>
         {/* Redirect to /dashboard if logged in */}
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
@@ -58,9 +62,7 @@ console.log('%csrc/App.js:17 tournamentList', 'color: #007acc;', tournamentList)
         />
 
         <Route path="/sign-up" element={<Signup />} />
-
         <Route path="tournament/:tournamentId" element={<TournamentDetailsPage />} />
-
         <Route path="/create-tournament" element={<CreateATournament />} />
       </Routes>
     </div>

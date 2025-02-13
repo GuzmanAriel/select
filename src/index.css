@@ -450,6 +450,50 @@ textarea.form-control {
   text-overflow: ellipsis;
   max-width: 200px;
 }
+
+.tournament-details {
+  height: 400px;
+  padding: 0;
+}
+
+.tournament-details__heading {
+  z-index: 2;
+  top: 30%;
+  text-align: center;
+}
+
+.full-overlay {
+  position: absolute;
+  width:100%;
+  height:100%;
+  background-color: rgba(22, 27, 31, .7);
+  top:0;
+}
+
+.tournament-details__heading h1 {
+  font-size: 45px;
+}
+
+.tournament-details__heading h2 {
+  font-size: 32px;
+}
+
+.tournament-details__prizes {
+  display: flex;
+  justify-content: center;
+}
+
+.tournament-details__prizes div {
+  background: #282D31;
+  border-radius: 999px;
+  padding: 10px 10px;
+  margin-right: 10px;
+}
+
+.tournament-details__details {
+  margin-top: 60px;
+}
+
 @media (min-width: 768px) { 
 
   .card-status {
