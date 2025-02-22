@@ -103,3 +103,10 @@ export const selectTournamentById = (id) => (state) => {
         (tournament) => tournament.id === parseInt(id)
     );
 };
+
+// Select featured tournaments
+export const selectFeaturedTournaments = (state) =>{
+    return state.tournaments.tournamentsArray.filter(
+        (tournament) => tournament.is_featured === true
+    );
+};

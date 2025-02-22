@@ -21,7 +21,7 @@ import {
     const currentTournaments = useSelector(selectCurrentTournaments);
     const pastTournaments = useSelector(selectPastTournaments);
     const upcomingTournaments = useSelector(selectUpcomingTournaments);
-
+    
     // Function to toggle the active tab
     const toggleTab = (tab) => {
       if (activeTab !== tab) {

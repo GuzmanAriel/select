@@ -494,6 +494,22 @@ textarea.form-control {
   margin-top: 60px;
 }
 
+.slider-item  img{
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.slider-item  h3{
+  font-size: 45px;
+  color: #FAD703;
+}
+
+.slider-item  p{
+  font-size: 30px;
+  color: #FAD703;
+}
+
 @media (min-width: 768px) { 
 
   .card-status {

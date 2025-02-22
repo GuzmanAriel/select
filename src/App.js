@@ -10,6 +10,7 @@ import { selectAllTournaments } from './utils/tournaments/tournamentLists';
 import TournamentDetailsPage from './pages/TournamentDetailsPage';
 import CreateTournamentButton from './components/createTournaments/CreateTournamentButton';
 import CreateATournament from './pages/CreateTournamentPage';
+import SelectTournaments from './pages/SelectTournamentsPage'; // Import your new home page
 
 function App() {
   const tournamentList = selectAllTournaments();
@@ -42,10 +43,16 @@ function App() {
       )}
 
       <Routes>
-        {/* Redirect to /dashboard if logged in */}
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        {/* Default Route (Home Page) */}
+        <Route path="/" element={<SelectTournaments />} />
 
-        {/* Protect the Dashboard Route */}
+        {/* Redirect to dashboard if logged in */}
+        <Route
+          path="/login"
+          element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login setIsLoggedIn={setIsLoggedIn} />}
+        />
+
+        {/* Protected Dashboard Route */}
         <Route
           path="/dashboard"
           element={
@@ -55,14 +62,13 @@ function App() {
           }
         />
 
-        {/* Default route */}
-        <Route
-          path="/"
-          element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
-        />
-
+        {/* Sign-up page */}
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="tournament/:tournamentId" element={<TournamentDetailsPage />} />
+
+        {/* Tournament Details */}
+        <Route path="/tournament/:tournamentId" element={<TournamentDetailsPage />} />
+
+        {/* Create Tournament Page */}
         <Route path="/create-tournament" element={<CreateATournament />} />
       </Routes>
     </div>
