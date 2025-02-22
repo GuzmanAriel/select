@@ -496,7 +496,7 @@ textarea.form-control {
 
 .slider-item  img{
   width: 100%;
-  height: 600px;
+  height: 500px;
   object-fit: cover;
 }
 
@@ -507,7 +507,34 @@ textarea.form-control {
 
 .slider-item  p{
   font-size: 30px;
-  color: #FAD703;
+
+}
+
+.slider-item .calendar-icon {
+  width: 20px;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.slider-item .calendar-icon svg{
+  fill:#fff;
+}
+
+.slider-item__date {
+  margin-bottom: 10px;
+}
+
+.purse-icon {
+  width: 20px;
+  display: inline-block;
+}
+
+.purse-icon svg {
+  fill: #FFF;
+}
+
+.ts-select-tournaments {
+  margin-top: 60px;
 }
 
 @media (min-width: 768px) { 

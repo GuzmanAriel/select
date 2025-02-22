@@ -4,10 +4,10 @@ import {selectFeaturedTournaments} from '../features/tournaments/tournamentsSlic
 
   const SelectTournamentsPage = () => {
     const featuredTournaments = useSelector(selectFeaturedTournaments);
-console.log('%csrc/pages/SelectTournamentsPage.js:7 featuredTournaments', 'color: #007acc;', featuredTournaments);
+
     return (
-        <div className="ts-alignment">
-             <h1 className="mb-5">Austin Select Tournaments</h1>
+        <div className="ts-alignment ts-select-tournaments">
+             <h1 className="mb-5 text-center">Austin Select Tournaments</h1>
              
             <Slider featuredTournaments={featuredTournaments}/>
         </div>
