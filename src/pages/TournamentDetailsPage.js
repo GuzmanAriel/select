@@ -5,6 +5,7 @@ import { selectTournamentById } from '../features/tournaments/tournamentsSlice';
 import FirstPlaceIcon from '../assets/images/first-place.svg';
 import SecondPlaceIcon from '../assets/images/second-place.svg';
 import ThirdPlaceIcon from '../assets/images/third-place.svg';
+import DetailTabs from '../components/tournamentDetails/DetailTabs';
 
 
 
@@ -50,30 +51,27 @@ const TounramentDetailsPage = () => {
                 </Col>
                 <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Playoff Elimination:</b> {tournament.playoff_elimination_type}</p>
+                        <p><b>Playoff Elimination:</b> {tournament?.playoff_elimination_type}</p>
                     </div>
                 </Col>
                 <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Location:</b> {tournament.location}</p>
+                        <p><b>Location:</b> {tournament?.location}</p>
                     </div>
                 </Col>
                 <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Total Teams:</b> {tournament.total_teams}</p>
+                        <p><b>Total Teams:</b> {tournament?.total_teams}</p>
                     </div>
                 </Col>
                 <Col sm="12" className="mt-5">
                     <div>
                         <p className="h4 mb-2">Additional Notes:</p>
-                        <p>{tournament.additional_notes}</p>
+                        <p>{tournament?.additional_notes}</p>
                     </div>
                 </Col>
-                <Col sm="12" className="mt-3">
-                    <div>
-                        <p className="h4 mb-2">Teams:</p>
-                        <p>No teams have signed up</p>
-                    </div>
+                <Col sm="12" className="mt-5">
+                    <DetailTabs/>
                 </Col>
             </Row>
         </div>
