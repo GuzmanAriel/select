@@ -11,9 +11,9 @@ import ThirdPlaceIcon from '../assets/images/third-place.svg';
 const TounramentDetailsPage = () => {
     const { tournamentId } = useParams();
     const tournament = useSelector(selectTournamentById(tournamentId));
-    console.log('%csrc/pages/TournamentDetailsPage.js:9 object', 'color: #007acc;', tournament);
+
     return (
-     <Container className="mt-5 ts-alignment">
+     <Container className="mt-5 mb-5 ts-alignment">
         <div className="mt-5 tournament-details position-relative" style={{
             background: "url('https://picsum.photos/1000/400')",
             backgroundSize: "cover",
@@ -43,24 +43,36 @@ const TounramentDetailsPage = () => {
         </div>
         <div className="tournament-details__details">
             <Row>
-                <Col sm="12" md="6">
+                <Col sm="12" md="6" className="h4">
                     <div>
                         <p><b>Tournament Type:</b> BYO4</p>
                     </div>
                 </Col>
-                <Col sm="12" md="6">
+                <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Playoff Type:</b> BYO4</p>
+                        <p><b>Playoff Elimination:</b> {tournament.playoff_elimination_type}</p>
                     </div>
                 </Col>
-                <Col sm="12" md="6">
+                <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Location:</b> BYO4</p>
+                        <p><b>Location:</b> {tournament.location}</p>
                     </div>
                 </Col>
-                <Col sm="12" md="6">
+                <Col sm="12" md="6" className="h4">
                     <div>
-                        <p><b>Total Teams:</b> BYO4</p>
+                        <p><b>Total Teams:</b> {tournament.total_teams}</p>
+                    </div>
+                </Col>
+                <Col sm="12" className="mt-5">
+                    <div>
+                        <p className="h4 mb-2">Additional Notes:</p>
+                        <p>{tournament.additional_notes}</p>
+                    </div>
+                </Col>
+                <Col sm="12" className="mt-3">
+                    <div>
+                        <p className="h4 mb-2">Teams:</p>
+                        <p>No teams have signed up</p>
                     </div>
                 </Col>
             </Row>
