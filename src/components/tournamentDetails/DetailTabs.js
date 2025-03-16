@@ -7,10 +7,12 @@ import {
     Row,
   } from 'reactstrap';
   import { useState } from 'react';
+import TeamList from '../teamList/TeamList';
 
   const DetailTabs = (props) => { 
+    const {teams, totalTeams, total_pools} = props;
     const [activeTab, setActiveTab] = useState("1"); 
-
+    
       // Function to toggle the active tab
       const toggleTab = (tab) => {
         if (activeTab !== tab) {
@@ -50,7 +52,7 @@ import {
         <TabContent activeTab={activeTab} className="mt-5">
             <TabPane tabId="1">
                 <Row>
-                    This would be the list of teams
+                    <TeamList teams={teams} totalTeams={totalTeams}/>
                 
                 </Row>
           </TabPane>

@@ -71,7 +71,7 @@ const TounramentDetailsPage = () => {
                     </div>
                 </Col>
                 <Col sm="12" className="mt-5">
-                    <DetailTabs/>
+                    <DetailTabs teams={tournament?.teams} totalTeams={tournament?.total_teams} total_pools={tournament?.pool_number}/>
                 </Col>
             </Row>
         </div>
