@@ -13,7 +13,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background:rgb(var(--bs-primary));
+  color:#fff;
 }
+
+.table {
+  color: #fff;
+}
+
 a {
   color:inherit;
 }
@@ -274,6 +280,10 @@ box-shadow: -1px 6px 11px 1px rgba(22,27,31,0.37);
   border:none;
   color:#FFF;
   margin-right: 20px;
+}
+
+.nav-tabs.pool-tabs .nav-link {
+  font-size: 18px;
 }
 
 .nav-tabs .nav-link:hover {
@@ -552,6 +562,15 @@ textarea.form-control {
 
 .accordion-item {
   background: transparent;
+}
+
+.matches .match {
+  background: #fff;
+  color:#404447;
+}
+
+.matches .table{
+  color:#404447;
 }
 
 

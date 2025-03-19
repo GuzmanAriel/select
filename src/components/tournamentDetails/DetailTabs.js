@@ -8,6 +8,7 @@ import {
   } from 'reactstrap';
   import { useState } from 'react';
 import TeamList from '../teamList/TeamList';
+import Pools from '../pools/Pools';
 
   const DetailTabs = (props) => { 
     const {teams, totalTeams, total_pools} = props;
@@ -58,7 +59,7 @@ import TeamList from '../teamList/TeamList';
           </TabPane>
           <TabPane tabId="2">
                 <Row>
-                    This would be the pools
+                    <Pools />
                 
                 </Row>
           </TabPane>
