@@ -12,7 +12,7 @@ import DetailTabs from '../components/tournamentDetails/DetailTabs';
 const TounramentDetailsPage = () => {
     const { tournamentId } = useParams();
     const tournament = useSelector(selectTournamentById(tournamentId));
-
+ 
     return (
      <Container className="mt-5 mb-5 ts-alignment">
         <div className="mt-5 tournament-details position-relative" style={{
@@ -71,7 +71,7 @@ const TounramentDetailsPage = () => {
                     </div>
                 </Col>
                 <Col sm="12" className="mt-5">
-                    <DetailTabs teams={tournament?.teams} totalTeams={tournament?.total_teams} total_pools={tournament?.pool_number}/>
+                    <DetailTabs teams={tournament?.teams} totalTeams={tournament?.total_teams} total_pools={tournament?.pool_number} pools={tournament?.pools}/>
                 </Col>
             </Row>
         </div>

@@ -11,7 +11,7 @@ import TeamList from '../teamList/TeamList';
 import Pools from '../pools/Pools';
 
   const DetailTabs = (props) => { 
-    const {teams, totalTeams, total_pools} = props;
+    const {teams, totalTeams, total_pools, pools} = props;
     const [activeTab, setActiveTab] = useState("1"); 
     
       // Function to toggle the active tab
@@ -59,8 +59,7 @@ import Pools from '../pools/Pools';
           </TabPane>
           <TabPane tabId="2">
                 <Row>
-                    <Pools />
-                
+                    <Pools poolsTotal={total_pools} pools={pools} teams={teams}/>   
                 </Row>
           </TabPane>
           <TabPane tabId="3">
