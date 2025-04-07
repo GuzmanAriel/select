@@ -9,9 +9,10 @@ import {
   import { useState } from 'react';
 import TeamList from '../teamList/TeamList';
 import Pools from '../pools/Pools';
+import { DoubleElimination, SingleElimination } from '../brackets/SingleElimination';
 
   const DetailTabs = (props) => { 
-    const {teams, totalTeams, total_pools, pools} = props;
+    const {teams, totalTeams, total_pools, pools, eliminationType} = props;
     const [activeTab, setActiveTab] = useState("1"); 
     
       // Function to toggle the active tab
@@ -64,8 +65,13 @@ import Pools from '../pools/Pools';
           </TabPane>
           <TabPane tabId="3">
                 <Row>
-                    This would be the playoff bracket
-                
+                  {/* {
+                    eliminationType === "Single" ? (
+                      <SingleElimination />
+                    ) : (
+                      <DoubleElimination />
+                    )
+                  } */}
                 </Row>
           </TabPane>
         </TabContent>
