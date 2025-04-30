@@ -2,47 +2,43 @@ import React from "react";
 import { Table, Row, Col } from "reactstrap";
 
 const PoolMatches = ({ matches }) => {
-  if (!matches || matches.length === 0) {
-    return <p>No matches scheduled for this pool yet.</p>;
-  }
-
   return (
     <div className="matches">
-      <h3>Pool Matches</h3>
+      <h4 className="mb-4">Pool Matches</h4>
       <Row>
-        {matches.map((match, index) => (
-          <Col sm="12" md="6" key={index}>
-            <div
-              className="match"
-              style={{
-                marginBottom: "20px",
-                border: "1px solid #ccc",
-                padding: "10px",
-                borderRadius: "5px",
-              }}
-            >
-              <h5>Match {index + 1}</h5>
-              <Table bordered>
+        {matches.map((match, idx) => (
+          <Col sm="12" md="6" key={idx}>
+            <div className="match mb-4 p-3 border rounded">
+              <h5 className="mb-3">
+                {match.team1} vs {match.team2}
+              </h5>
+              <Table bordered size="sm">
                 <thead>
                   <tr>
                     <th>Team</th>
                     <th>Set 1</th>
                     <th>Set 2</th>
+                    <th>Set 3</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>{match.team1}</strong></td>
-                    <td>{match.set1?.[0] ?? "-"}</td>
-                    <td>{match.set2?.[0] ?? "-"}</td>
+                    <td>{match.team1}</td>
+                    <td>{match.sets?.[0]?.[0] ?? "-"}</td>
+                    <td>{match.sets?.[1]?.[0] ?? "-"}</td>
+                    <td>{match.sets?.[2]?.[0] ?? "-"}</td>
                   </tr>
                   <tr>
-                    <td><strong>{match.team2}</strong></td>
-                    <td>{match.set1?.[1] ?? "-"}</td>
-                    <td>{match.set2?.[1] ?? "-"}</td>
+                    <td>{match.team2}</td>
+                    <td>{match.sets?.[0]?.[1] ?? "-"}</td>
+                    <td>{match.sets?.[1]?.[1] ?? "-"}</td>
+                    <td>{match.sets?.[2]?.[1] ?? "-"}</td>
                   </tr>
                 </tbody>
               </Table>
+              <p className="text-muted mb-0">
+                Winner: <strong>{match.winner ?? "TBD"}</strong>
+              </p>
             </div>
           </Col>
         ))}

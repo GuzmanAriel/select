@@ -11,6 +11,8 @@ import TournamentDetailsPage from './pages/TournamentDetailsPage';
 import CreateTournamentButton from './components/createTournaments/CreateTournamentButton';
 import CreateATournament from './pages/CreateTournamentPage';
 import SelectTournaments from './pages/SelectTournamentsPage'; // Import your new home page
+import SingleEliminationPage from './pages/SingleEliminationPage';
+import DoubleEliminationPage from './pages/DoubleEliminationPage';
 
 function App() {
   const tournamentList = selectAllTournaments();
@@ -67,6 +69,11 @@ function App() {
 
         {/* Tournament Details */}
         <Route path="/tournament/:tournamentId" element={<TournamentDetailsPage />} />
+
+        {/* Bracket Pages */}
+        <Route path="/tournaments/:id/single-elimination" element={<SingleEliminationPage />} />
+        <Route path="/tournaments/:id/double-elimination" element={<DoubleEliminationPage />} />
+
 
         {/* Create Tournament Page */}
         <Route path="/create-tournament" element={<CreateATournament />} />

@@ -9,12 +9,13 @@ import {
   import { useState } from 'react';
 import TeamList from '../teamList/TeamList';
 import Pools from '../pools/Pools';
-import { DoubleElimination, SingleElimination } from '../brackets/SingleElimination';
+import { useNavigate } from 'react-router-dom';
 
   const DetailTabs = (props) => { 
-    const {teams, totalTeams, total_pools, pools, eliminationType} = props;
+    const {teams, id, totalTeams, total_pools, pools, eliminationType} = props;
     const [activeTab, setActiveTab] = useState("1"); 
-    
+    const navigate = useNavigate();
+    console.log('%cselect-tourney/src/components/tournamentDetails/DetailTabs.js:18 eliminationType', 'color: #007acc;', eliminationType);
       // Function to toggle the active tab
       const toggleTab = (tab) => {
         if (activeTab !== tab) {
@@ -65,13 +66,27 @@ import { DoubleElimination, SingleElimination } from '../brackets/SingleEliminat
           </TabPane>
           <TabPane tabId="3">
                 <Row>
-                  {/* {
-                    eliminationType === "Single" ? (
-                      <SingleElimination />
-                    ) : (
-                      <DoubleElimination />
-                    )
-                  } */}
+                  {eliminationType === "Single Elimination" ? (
+                    <div>
+                      <p>This tournament uses Single Elimination.</p>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => navigate(`/tournaments/${id}/single-elimination`)}
+                      >
+                        View Bracket
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <p>This tournament uses Double Elimination.</p>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => navigate(`/tournaments/${id}/double-elimination`)}
+                      >
+                        View Bracket
+                      </button>
+                    </div>
+                  )}
                 </Row>
           </TabPane>
         </TabContent>

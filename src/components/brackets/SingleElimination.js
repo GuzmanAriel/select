@@ -1,23 +1,19 @@
-// import { SingleEliminationBracket, DoubleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
-// export const DoubleElimination = () => (
-//   <DoubleEliminationBracket
-//     matches={matches}
-//     matchComponent={Match}
-//     svgWrapper={({ children, ...props }) => (
-//       <SVGViewer width={500} height={500} {...props}>
-//         {children}
-//       </SVGViewer>
-//     )}
-//   />
-// );
-// export const SingleElimination = () => (
-//   <SingleEliminationBracket
-//     matches={matches}
-//     matchComponent={Match}
-//     svgWrapper={({ children, ...props }) => (
-//       <SVGViewer width={500} height={500} {...props}>
-//         {children}
-//       </SVGViewer>
-//     )}
-//   />
-// );
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { SingleEliminationBracket } from '@g-loot/react-tournament-brackets';
+
+const SingleEliminationPage = () => {
+  const { id } = useParams();
+
+  // placeholder/fake bracket
+  const fakeMatches = [/* add your match data here */];
+
+  return (
+    <div className="container mt-4">
+      <h2>Single Elimination Bracket - Tournament {id}</h2>
+      <SingleEliminationBracket matches={fakeMatches} />
+    </div>
+  );
+};
+
+export default SingleEliminationPage;

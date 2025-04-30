@@ -72,11 +72,12 @@ const TounramentDetailsPage = () => {
                 </Col>
                 <Col sm="12" className="mt-5">
                     <DetailTabs 
+                    id={tournament?.id}
                     teams={tournament?.teams} 
                     totalTeams={tournament?.total_teams} 
                     total_pools={tournament?.pool_number} 
                     pools={tournament?.pools}
-                    eliminationType={tournament?.playoff_bracket_number}/>
+                    eliminationType={tournament?.playoff_elimination_type}/>
                 </Col>
             </Row>
         </div>
