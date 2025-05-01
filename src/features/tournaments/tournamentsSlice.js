@@ -1,39 +1,15 @@
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../../app/shared/baseUrl';
 
-
-export const fetchTournaments = createAsyncThunk(
-    'tournaments/fetchTournaments',
-    async () => {
-        const response = await fetch(baseUrl + 'tournaments');
-        if (!response.ok) {
-            return Promise.reject('Unable to fetch, status: ' + response.status);
-        }
-        const data = await response.json();
-        return data;
-    }
-);
-
-/**
- * Post a new comment to the API
- */
-export const postTournament = createAsyncThunk(
-    'tournaments/postTournament',
-    async (comment, { rejectWithValue }) => {
+export const fetchAllTournamentData = createAsyncThunk(
+    'tournaments/fetchAllTournamentData',
+    async (_, { rejectWithValue }) => {
         try {
-            const response = await fetch(baseUrl + 'tournaments', {
-                method: "POST",
-                body: JSON.stringify(comment),
-                headers: { 'Content-Type': 'application/json' }
-            });
-
+            const response = await fetch(baseUrl);
             if (!response.ok) {
-                throw new Error(`Failed to post tournament: ${response.status}`);
+                throw new Error(`Unable to fetch, status: ${response.status}`);
             }
-
-            const data = await response.json();
-            return data;
+            return await response.json();
         } catch (error) {
             return rejectWithValue(error.message);
         }
@@ -41,7 +17,10 @@ export const postTournament = createAsyncThunk(
 );
 
 const initialState = {
-    tournamentsArray: [],
+    tournaments: [],
+    teams: [],
+    pools: [],
+    brackets: [],
     isLoading: true,
     errMsg: ''
 };
@@ -52,61 +31,55 @@ const tournamentsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchTournaments.pending, (state) => {
+            .addCase(fetchAllTournamentData.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(fetchTournaments.fulfilled, (state, action) => {
+            .addCase(fetchAllTournamentData.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.errMsg = '';
-                state.tournamentsArray = action.payload;
+                state.tournaments = action.payload.tournaments;
+                state.teams = action.payload.teams;
+                state.pools = action.payload.pools;
+                state.brackets = action.payload.brackets;
             })
-            .addCase(fetchTournaments.rejected, (state, action) => {
+            .addCase(fetchAllTournamentData.rejected, (state, action) => {
                 state.isLoading = false;
-                state.errMsg = action.error ? action.error.message : 'Fetch failed';
-            })
-
-            .addCase(postTournament.fulfilled, (state, action) => {
-                state.tournamentsArray.push(action.payload);
-            })
-            
-            .addCase(postTournament.rejected, (state, action) => {
-                alert(`Your tournament could not be posted\nError: ` + (action.payload || 'Fetch Failed'));
+                state.errMsg = action.payload || 'Fetch failed';
             });
     }
 });
 
 export const tournamentsReducer = tournamentsSlice.reducer;
 
-export const selectAllTournaments = (state) => {
-    return state.tournaments.tournamentsArray;
+// Selectors
+export const selectAllTournaments = (state) => state.tournaments.tournaments;
+
+export const selectTournamentById = (id) => (state) =>
+    state.tournaments.tournaments.find(t => t.id === parseInt(id));
+
+export const selectTeamsByTournamentId = (id) => (state) =>
+    state.tournaments.teams.filter(t => t.tournamentId === parseInt(id));
+
+export const selectPoolsByTournamentId = (id) => (state) =>
+    state.tournaments.pools.filter(p => p.tournamentId === parseInt(id));
+
+export const selectBracketsByTournamentId = (id) => (state) =>
+    state.tournaments.brackets.filter(b => b.tournamentId === parseInt(id));
+
+export const selectUpcomingTournaments = (state) => {
+    const today = new Date().toISOString();
+    return state.tournaments.tournaments.filter(t => t.date_utc > today);
+};
+
+export const selectPastTournaments = (state) => {
+    const today = new Date().toISOString();
+    return state.tournaments.tournaments.filter(t => t.date_utc < today);
 };
 
 export const selectCurrentTournaments = (state) => {
     const today = new Date().toISOString().split('T')[0];
-    return state.tournaments.tournamentsArray.filter(tournament => tournament.date_utc.startsWith(today));
+    return state.tournaments.tournaments.filter(t => t.date_utc.startsWith(today));
 };
 
-export const selectPastTournaments = (state) => {
-    //return filter of past tournaments
-    const today = new Date().toISOString();
-    return state.tournaments.tournamentsArray.filter(tournament => tournament.date_utc < today);
-};
-
-export const selectUpcomingTournaments = (state) => {
-    //return filter of past tournaments
-    const today = new Date().toISOString();
-    return state.tournaments.tournamentsArray.filter(tournament => tournament.date_utc > today);
-};
-
-export const selectTournamentById = (id) => (state) => {
-    return state.tournaments.tournamentsArray.find(
-        (tournament) => tournament.id === parseInt(id)
-    );
-};
-
-// Select featured tournaments
-export const selectFeaturedTournaments = (state) =>{
-    return state.tournaments.tournamentsArray.filter(
-        (tournament) => tournament.is_featured === true
-    );
-};
+export const selectFeaturedTournaments = (state) =>
+    state.tournaments.tournaments.filter(t => t.is_featured);
