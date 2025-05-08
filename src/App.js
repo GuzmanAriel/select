@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, Navigate, Link, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { fetchTournaments } from './features/tournaments/tournamentsSlice';
+import { fetchAllTournamentData } from './features/tournaments/tournamentsSlice';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import Header from './components/Header';
@@ -21,7 +21,7 @@ function App() {
   const location = useLocation(); // Get the current route
 
   useEffect(() => {
-    dispatch(fetchTournaments());
+    dispatch(fetchAllTournamentData());
   }, [dispatch]);
 
   // Protected Route Component
