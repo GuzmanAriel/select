@@ -12,10 +12,10 @@ import Pools from '../pools/Pools';
 import { useNavigate } from 'react-router-dom';
 
   const DetailTabs = (props) => { 
-    const {teams, id, totalTeams, total_pools, pools, eliminationType} = props;
+    const {teams, id, totalTeams, total_pools, pools, eliminationType, brackets} = props;
     const [activeTab, setActiveTab] = useState("1"); 
     const navigate = useNavigate();
-    console.log('%cselect-tourney/src/components/tournamentDetails/DetailTabs.js:18 eliminationType', 'color: #007acc;', eliminationType);
+
       // Function to toggle the active tab
       const toggleTab = (tab) => {
         if (activeTab !== tab) {
