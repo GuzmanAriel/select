@@ -5,17 +5,32 @@ import { baseUrl } from '../../app/shared/baseUrl';
 export const fetchAllTournamentData = createAsyncThunk(
     'tournaments/fetchAllTournamentData',
     async (_, { rejectWithValue }) => {
-        try {
-            const response = await fetch(baseUrl); // Ensure baseUrl ends with a slash
-            if (!response.ok) {
-                throw new Error(`Unable to fetch, status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            return rejectWithValue(error.message);
+      try {
+        const [tournamentsRes, teamsRes, poolsRes, bracketsRes] = await Promise.all([
+          fetch(baseUrl + 'tournaments'),
+          fetch(baseUrl + 'teams'),
+          fetch(baseUrl + 'pools'),
+          fetch(baseUrl + 'brackets')
+        ]);
+  
+        if (![tournamentsRes, teamsRes, poolsRes, bracketsRes].every(res => res.ok)) {
+          throw new Error('One or more requests failed');
         }
+  
+        const [tournaments, teams, pools, brackets] = await Promise.all([
+          tournamentsRes.json(),
+          teamsRes.json(),
+          poolsRes.json(),
+          bracketsRes.json()
+        ]);
+  
+        return { tournaments, teams, pools, brackets };
+      } catch (error) {
+        return rejectWithValue(error.message);
+      }
     }
-);
+  );
+  
 
 export const postTournament = createAsyncThunk(
     'tournaments/postTournament',

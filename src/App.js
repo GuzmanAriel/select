@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, Navigate, Link, useLocation } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTournamentData } from './features/tournaments/tournamentsSlice';
 import Login from './pages/LoginPage';
 import Dashboard from './pages/DashboardPage';
 import Header from './components/Header';
 import Signup from './pages/SignUpPage';
-import { selectAllTournaments } from './utils/tournaments/tournamentLists';
+import { selectAllTournaments } from './features/tournaments/tournamentsSlice';
 import TournamentDetailsPage from './pages/TournamentDetailsPage';
 import CreateTournamentButton from './components/createTournaments/CreateTournamentButton';
 import CreateATournament from './pages/CreateTournamentPage';
@@ -15,7 +15,7 @@ import SingleEliminationPage from './pages/SingleEliminationPage';
 import DoubleEliminationPage from './pages/DoubleEliminationPage';
 
 function App() {
-  const tournamentList = selectAllTournaments();
+  const tournamentList = useSelector(selectAllTournaments);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const dispatch = useDispatch();
   const location = useLocation(); // Get the current route
