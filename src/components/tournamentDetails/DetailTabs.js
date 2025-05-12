@@ -10,9 +10,17 @@ import {
 import TeamList from '../teamList/TeamList';
 import Pools from '../pools/Pools';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {
+  selectPoolsByTournamentId,
+  selectTeamsByTournamentId
+} from '../../features/tournaments/tournamentsSlice';
+
 
   const DetailTabs = (props) => { 
-    const {teams, id, totalTeams, total_pools, pools, eliminationType, brackets} = props;
+    const {id, totalTeams, total_pools, eliminationType, brackets} = props;
+    const pools = useSelector(selectPoolsByTournamentId(id));
+    const teams = useSelector(selectTeamsByTournamentId(id));
     const [activeTab, setActiveTab] = useState("1"); 
     const navigate = useNavigate();
 

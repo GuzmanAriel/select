@@ -13,6 +13,7 @@ import CreateATournament from './pages/CreateTournamentPage';
 import SelectTournaments from './pages/SelectTournamentsPage'; // Import your new home page
 import SingleEliminationPage from './pages/SingleEliminationPage';
 import DoubleEliminationPage from './pages/DoubleEliminationPage';
+import BackButton from './components/BackButton';
 
 function App() {
   const tournamentList = useSelector(selectAllTournaments);
@@ -29,11 +30,17 @@ function App() {
     return isLoggedIn ? children : <Navigate to="/login" replace />;
   };
 
+  const showBackButton = [
+    '/create-tournament',
+    '/sign-up'
+  ].some(path => location.pathname.startsWith(path)) || location.pathname.startsWith('/tournament/');
+
   return (
     <div>
       <header className="border-secondary border-bottom">
         <Header isLoggedIn={isLoggedIn} />
       </header>
+      {showBackButton && <BackButton />}
 
       {/* ✅ Hide the button when the route is `/create-tournament` */}
       {location.pathname !== "/create-tournament" && (
